@@ -1,1 +1,9 @@
-mako==1.0.7
+cffi==1.14.5
+cryptography==3.4.7
+Django==2.2
+Mako==1.1.4
+MarkupSafe==1.1.1
+pycparser==2.20
+PyMySQL==1.0.2
+pytz==2021.1
+sqlparse==0.4.1
