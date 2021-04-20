@@ -1,0 +1,47 @@
+<%inherit  file="../base.html"/>
+<%! from django.shortcuts import reverse%>
+<%def name="content()">
+<%
+  prev_page = '{}?page={}'.format(reverse('admin_manager'), page_num - 1)
+  next_page = '{}?page={}'.format(reverse('admin_manager'), page_num + 1)
+%>
+
+<h1>1232221</h1>
+% if page_num > 1:
+<a href="${prev_page}">上一頁</a>
+% endif
+% if page_num < total:
+<a href="${next_page}">下一頁</a>
+% endif
+<table class="table">
+    <thead>
+    <tr>
+        <th>帳號</th>
+        <th>狀態</th>
+        <th>創建時間</th>
+        <th>編輯</th>
+    </tr>
+
+    </thead>
+    <tbody>
+
+        % for user in users:
+        <tr>
+        <td>${user.username}</td>
+        <td>${user.is_superuser}</td>
+        <td>${user.date_joined}</td>
+        % if user.is_superuser:
+        <td><a href="${reverse('admin_update_status')}?status=off"> 取消管理員 </a></td>
+        % else:
+        <td><a href="${reverse('admin_update_status')}?status=on">成為管理員</a></td>
+        %endif
+        </tr>
+        % endfor
+
+
+
+    </tbody>
+
+
+</table>
+</%def>
